@@ -36,10 +36,19 @@ public class GhostCombo : MonoBehaviour {
         dashCount++;
     }
 
+    //Diuj que asco mono
+    IEnumerator DashFinish() {
+        yield return null;
+        Debug.Log(props.Count + " count" + dashCount);
+        if (dashCount > props.Count) { //Dasheaste pero no poseiste ninguno nuevo
+            FailCombo();
+        }
+    }
+
     public void FinishDash() {
         Debug.Log(props.Count + " lsat" + dashCount);
-        dashCount = 0;
-        //if (props.Count == lastCombo) { //Dasheaste pero no poseiste ninguno nuevo
+        StartCoroutine("DashFinish");
+        //if (dashCount > props.Count) { //Dasheaste pero no poseiste ninguno nuevo
         //    FailCombo();
         //}
     }
@@ -48,6 +57,7 @@ public class GhostCombo : MonoBehaviour {
         foreach (PossessableProp p in props) {
             p.ReturnToNormal();
         }
+        dashCount = 0;
         props = new List<PossessableProp>();
 
     }
@@ -60,6 +70,8 @@ public class GhostCombo : MonoBehaviour {
         }
         avg = avg / props.Count;
         tmr = 0f;
+        dashCount = 0;
+
         //props[0].currentRoom.ScarePosition(avg) //FACU ACA
         props = new List<PossessableProp>();
     }

@@ -13,7 +13,7 @@ public class RoomProperties : MonoBehaviour
 	private List<HumanAI> Humans = new List<HumanAI>();
 	void Awake()
 	{
-		Center = transform.FindChild("Center");
+		Center = transform.Find("Center");
 	}
 	
 	void Update () {
