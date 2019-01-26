@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostController : MonoBehaviour {
-
     DashController dash;
     GhostMovement move;
+    GhostCombo combo;
     bool isPossessing;
 
 
     void Start() {
         dash = GetComponent<DashController>();
         move = GetComponent<GhostMovement>();
+        combo = GetComponent<GhostCombo>();
     }
 
     public Vector3 GetNextDir() {
@@ -35,7 +36,9 @@ public class GhostController : MonoBehaviour {
         return isPossessing;
     }
 
-    public void StartPossess() {
+    public void StartPossess(PossessableProp prop) {
+        dash.Stop();
+        combo.Add(prop);
         isPossessing = true;
         ApplyPossess();
     }
@@ -49,7 +52,7 @@ public class GhostController : MonoBehaviour {
         GetModel().SetActive(!isPossessing);
     }
 
-    GameObject GetModel() {
+    public GameObject GetModel() {
         return transform.GetChild(0).gameObject;
     }
 }

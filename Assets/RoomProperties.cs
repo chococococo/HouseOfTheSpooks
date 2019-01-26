@@ -85,6 +85,13 @@ public class RoomProperties : MonoBehaviour
 					Doors.Add(door);
 				}
 			}
+            else {
+                PossessableProp prop = other.GetComponent<PossessableProp>();
+                if (prop != null) {
+                    Debug.Log("prop");
+                    prop.GetComponentInParent<PossessableProp>().currentRoom = this;
+                }
+            }
 		}
 	
 	}
