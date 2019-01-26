@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PossessableProp : MonoBehaviour {
-
+    public RoomProperties currentRoom;
     public float time = 1f;
     public GameObject brokenPropPrefab;
     public Color possessedColor;
@@ -43,7 +43,7 @@ public class PossessableProp : MonoBehaviour {
             Debug.Log("player entered");
             ghost = other.transform.parent.GetComponent<GhostController>();
             coll.enabled = false;
-            ghost.StartPossess();
+            ghost.StartPossess(this);
             SetSpookyColor();
             //PlayAnimation
         }
@@ -57,20 +57,8 @@ public class PossessableProp : MonoBehaviour {
         render.material.color = initialColor;
     }
 
-    private void Update() {
-        if (ghost != null) {
-            tmr += Time.deltaTime;
-            if (tmr >= time && !ghost.InCombo()) {
-                ghost.FinishPossess();
-                if (ghost.LastComboSuccess()) {
-                    DestroyPropAndSpawn();
-                }
-                
-            }
-        }
-    }
 
-    private void DestroyPropAndSpawn() {
+    public void DestroyPropAndSpawn() {
         if (broken == null) {
             broken = Instantiate(brokenPropPrefab, this.transform.position, this.transform.rotation).GetComponent<BrokenProp>();
             broken.SetOriginal(this);
