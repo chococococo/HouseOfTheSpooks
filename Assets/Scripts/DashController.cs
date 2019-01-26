@@ -29,34 +29,31 @@ public class DashController : MonoBehaviour {
     }
 
     public void Dash(Vector3 direction) {
-        Debug.Log("DoDash");
+        Debug.Log("Do Dash " + direction);
         currentDir = direction;
         doDash = true;
+        ghost.GetModel().SetActive(true);
         dashTmr = 0f;
         coll.enabled = true;
     }
 
+    public void Stop() {
+        doDash = false;
+        coll.enabled = false;
+    }
+
     // Update is called once per frame
     private void Update() {
-        // Debug.Log(doDash + " inpout " + Input.GetKeyDown(KeyCode.Space));
-        if (Input.GetKeyDown(KeyCode.Z)) {
-            Debug.Log("askljaspd");
-        }
         if (doDash) {
             if (dashTmr < dashTime) {
                 dashTmr += Time.deltaTime;
-                if (!ghost.IsPossessing()) {
-                    rb.MovePosition(transform.position + currentDir * Time.deltaTime * dashMultiplier);
-                }
+                rb.MovePosition(transform.position + currentDir * Time.deltaTime * dashMultiplier);
             }
             else {
-                coll.enabled = false;
-                doDash = false;
+                Stop();
             }
         }
         else {
-
-
             if (Input.GetKeyDown(KeyCode.Z)) {
                 Dash(ghost.GetNextDir());
             }

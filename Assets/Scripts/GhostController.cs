@@ -36,6 +36,7 @@ public class GhostController : MonoBehaviour {
     }
 
     public void StartPossess() {
+        dash.Stop();
         isPossessing = true;
         ApplyPossess();
     }
@@ -49,7 +50,15 @@ public class GhostController : MonoBehaviour {
         GetModel().SetActive(!isPossessing);
     }
 
-    GameObject GetModel() {
+    public GameObject GetModel() {
         return transform.GetChild(0).gameObject;
+    }
+
+    public bool InCombo() {
+        return false;
+    }
+
+    public bool LastComboSuccess() {
+        return true;
     }
 }

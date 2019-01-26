@@ -5,32 +5,78 @@ using UnityEngine;
 public class PossessableProp : MonoBehaviour {
 
     public float time = 1f;
-    public GameObject brokenProp;
+    public GameObject brokenPropPrefab;
+    public Color possessedColor;
+
+    MeshRenderer render;
+    Color initialColor;
+
+    BrokenProp broken;
     float tmr;
     GhostController ghost;
+    BoxCollider coll;
 
     private void Start() {
+        InitialStatus();
+    }
+
+    private void OnEnable() {
+        InitialStatus();
+    }
+
+    void InitialStatus() {
+        ghost = null;
         tmr = 0f;
+        if (coll == null) {
+            coll = GetComponent<BoxCollider>();
+        }
+        coll.enabled = true;
+        if (render == null) {
+            render = GetComponent<MeshRenderer>();
+            initialColor = render.material.color;
+        }
+        SetNormalColor();
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
             Debug.Log("player entered");
             ghost = other.transform.parent.GetComponent<GhostController>();
-            //PlayAnimation
+            coll.enabled = false;
             ghost.StartPossess();
+            SetSpookyColor();
+            //PlayAnimation
         }
+    }
+
+    void SetSpookyColor() {
+        render.material.color = possessedColor;
+    }
+
+    void SetNormalColor() {
+        render.material.color = initialColor;
     }
 
     private void Update() {
         if (ghost != null) {
             tmr += Time.deltaTime;
-            if (tmr >= time) {
+            if (tmr >= time && !ghost.InCombo()) {
                 ghost.FinishPossess();
-                Instantiate(brokenProp, this.transform.position, this.transform.rotation);
-                Destroy(this.gameObject);
+                if (ghost.LastComboSuccess()) {
+                    DestroyPropAndSpawn();
+                }
+                
             }
         }
+    }
+
+    private void DestroyPropAndSpawn() {
+        if (broken == null) {
+            broken = Instantiate(brokenPropPrefab, this.transform.position, this.transform.rotation).GetComponent<BrokenProp>();
+            broken.SetOriginal(this);
+        }
+        broken.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
 }

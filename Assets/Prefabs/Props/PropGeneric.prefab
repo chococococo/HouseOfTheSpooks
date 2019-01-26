@@ -109,4 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 1
-  brokenProp: {fileID: 1876399748811386, guid: 34ed55017de4e45429c5892823ed522c, type: 2}
+  brokenPropPrefab: {fileID: 1876399748811386, guid: 34ed55017de4e45429c5892823ed522c,
+    type: 2}
+  possessedColor: {r: 0, g: 0.12270379, b: 1, a: 0}

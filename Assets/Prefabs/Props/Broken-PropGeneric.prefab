@@ -55,6 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4672855521656956}
+  - component: {fileID: 114633192865018602}
   m_Layer: 0
   m_Name: Broken-PropGeneric
   m_TagString: Untagged
@@ -126,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1876399748811386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.66, y: 0.39999998, z: 0.5}
+  m_LocalPosition: {x: -2.6, y: 0.39999998, z: 0.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4312334100989120}
@@ -297,3 +298,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114633192865018602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1876399748811386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c209fe0b4293dd6469dc8527b2ca0a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToRespawn: 2
