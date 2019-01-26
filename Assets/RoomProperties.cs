@@ -87,7 +87,6 @@ public class RoomProperties : MonoBehaviour
             else {
                 PossessableProp prop = other.GetComponent<PossessableProp>();
                 if (prop != null) {
-                    Debug.Log("prop");
                     prop.GetComponentInParent<PossessableProp>().currentRoom = this;
                 }
             }

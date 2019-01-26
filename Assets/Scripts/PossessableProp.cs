@@ -49,6 +49,13 @@ public class PossessableProp : MonoBehaviour {
         }
     }
 
+    public void ReturnToNormal() {
+        coll.enabled = true;
+        ghost.FinishPossess();
+        SetNormalColor();
+        ghost = null;
+    }
+
     void SetSpookyColor() {
         render.material.color = possessedColor;
     }

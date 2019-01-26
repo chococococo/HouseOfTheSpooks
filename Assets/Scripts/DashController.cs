@@ -6,6 +6,7 @@ public class DashController : MonoBehaviour {
     public float dashMultiplier = 5f;
     public float dashTime = 0.5f;
     GhostController ghost;
+    GhostCombo combo;
     SphereCollider coll;
 
     Vector3 currentDir;
@@ -20,6 +21,7 @@ public class DashController : MonoBehaviour {
         dashTmr = 0f;
         ghost = GetComponent<GhostController>();
         rb = GetComponent<Rigidbody>();
+        combo = GetComponent<GhostCombo>();
         coll = transform.GetChild(0).gameObject.GetComponent<SphereCollider>();
     }
 
@@ -29,17 +31,18 @@ public class DashController : MonoBehaviour {
     }
 
     public void Dash(Vector3 direction) {
-        Debug.Log("Do Dash " + direction);
         currentDir = direction;
         doDash = true;
         ghost.GetModel().SetActive(true);
         dashTmr = 0f;
         coll.enabled = true;
+        combo.StartDash(); //Me encantaria hacerlo con eventos :(
     }
 
     public void Stop() {
         doDash = false;
         coll.enabled = false;
+        combo.FinishDash(); //Me encantaria hacerlo con eventos :(
     }
 
     // Update is called once per frame

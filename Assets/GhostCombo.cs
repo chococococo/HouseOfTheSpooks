@@ -6,10 +6,12 @@ public class GhostCombo : MonoBehaviour {
     float timeToCloseCombo = 1f;
     float tmr;
     GhostController ghost;
-    List<PossessableProp> props;
+    public List<PossessableProp> props;
+    int dashCount;
 
     // Use this for initialization
     void Start() {
+        dashCount = 0;
         ghost = GetComponent<GhostController>();
         props = new List<PossessableProp>();
     }
@@ -25,14 +27,32 @@ public class GhostCombo : MonoBehaviour {
             tmr += Time.deltaTime;
             if (tmr >= timeToCloseCombo) {
                 ghost.FinishPossess();
-                FinishPossess();
+                SuccessCombo();
             }
-
         }
+    }
+
+    public void StartDash() {
+        dashCount++;
+    }
+
+    public void FinishDash() {
+        Debug.Log(props.Count + " lsat" + dashCount);
+        dashCount = 0;
+        //if (props.Count == lastCombo) { //Dasheaste pero no poseiste ninguno nuevo
+        //    FailCombo();
+        //}
+    }
+
+    void FailCombo() {
+        foreach (PossessableProp p in props) {
+            p.ReturnToNormal();
+        }
+        props = new List<PossessableProp>();
 
     }
 
-    void FinishPossess() {
+    void SuccessCombo() {
         Vector3 avg = Vector3.zero;
         foreach (PossessableProp p in props) {
             avg += p.transform.position;

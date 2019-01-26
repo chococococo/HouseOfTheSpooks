@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114790622222647004}
   - component: {fileID: 54461869361032976}
   - component: {fileID: 114117517784837182}
+  - component: {fileID: 114264880865211244}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Player
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180768747265552}
   m_LocalRotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268343}
-  m_LocalPosition: {x: -2.92, y: 0, z: 2.82}
+  m_LocalPosition: {x: 2.1899998, y: 0, z: 8.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4742560930870042}
@@ -144,6 +145,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4.2
+--- !u!114 &114264880865211244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1180768747265552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d7527a09d09d90499001e9ee23a91e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  props: []
 --- !u!114 &114582629899819360
 MonoBehaviour:
   m_ObjectHideFlags: 1
