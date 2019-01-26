@@ -3,30 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostController : MonoBehaviour {
-    public Vector3 teleportPoint;
-    public Rigidbody rb;
+
+    DashController dash;
+    GhostMovement move;
+    bool isPossessing;
 
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
+    void Start() {
+        dash = GetComponent<DashController>();
+        move = GetComponent<GhostMovement>();
     }
 
-    void FixedUpdate()
-    {
-        Vector3 nextPos = Vector3.zero;
+    public Vector3 GetNextDir() {
+        Vector3 res = Vector3.zero;
         if (Input.GetKey(KeyCode.UpArrow)) {
-            nextPos += transform.forward;
+            res += transform.forward;
         }
         if (Input.GetKey(KeyCode.DownArrow)) {
-            nextPos -= transform.forward;
+            res -= transform.forward;
         }
         if (Input.GetKey(KeyCode.RightArrow)) {
-            nextPos += transform.right;
+            res += transform.right;
         }
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            nextPos -= transform.right;
+            res -= transform.right;
         }
-        rb.MovePosition(transform.position + nextPos * Time.deltaTime);
+        return res;
+    }
+
+    public bool IsPossessing() {
+        return isPossessing;
+    }
+
+    public void StartPossess() {
+        isPossessing = true;
+        ApplyPossess();
+    }
+
+    public void FinishPossess() {
+        isPossessing = false;
+        ApplyPossess();
+    }
+    void ApplyPossess() {
+        move.enabled = !isPossessing;
+        GetModel().SetActive(!isPossessing);
+    }
+
+    GameObject GetModel() {
+        return transform.GetChild(0).gameObject;
     }
 }
