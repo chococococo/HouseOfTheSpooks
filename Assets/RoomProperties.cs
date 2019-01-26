@@ -3,32 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[SelectionBase]
 public class RoomProperties : MonoBehaviour 
 {	
 	public Transform Center;
+
+	[HideInInspector]
 	public List<Door> Doors = new List<Door>();
-	[SerializeField]
 	private List<HumanAI> Humans = new List<HumanAI>();
+	void Awake()
+	{
+		Center = transform.FindChild("Center");
+	}
+	
 	void Update () {
 		//ScareAll();
-	}	
-	
-
-	public Vector3 ScarePosition()
-	{
-		return Center.position;
-	}
-	public void ScareHumans()
+	}		
+	public void ScareHumans(Vector3 scarePosition)
 	{
 		foreach(HumanAI human in Humans)
 		{
 			Debug.Log("Scare " + human.name);
-			Door exitDoor = GetExitDoor(human.transform);
+			Door exitDoor = GetExitDoor(human.transform,scarePosition);
 			RoomProperties targetRoom = exitDoor.GetOpositeRoom(this);
 			human.ScareToRoom(targetRoom);
 		}
 	}	
-	private Door GetExitDoor(Transform fromPosition)
+	private Door GetExitDoor(Transform human, Vector3 scarePosition)
 	{
 		if(Doors.Count == 0)
 		{
@@ -41,13 +42,13 @@ public class RoomProperties : MonoBehaviour
 			return Doors[0];
 		}
 		// Get direction to run away in.
-		Vector2 directionToRun =  GetXYDirection(fromPosition.position,ScarePosition());
+		Vector2 directionToRun =  GetXYDirection(human.position, scarePosition);
 		int closestDoorIndex = 0;
 		float lowestAngle = 0;
 		for(int i=0;i<Doors.Count;i++)
 		{
 			//Get direction a door is in. 
-			Vector2 directionToDoor = GetXYDirection(Doors[i].transform.position, fromPosition.position);
+			Vector2 directionToDoor = GetXYDirection(Doors[i].transform.position, human.position);
 			// Get the angle between that door and the run away direction
 			float angle = Vector2.Angle(directionToRun.normalized, directionToDoor.normalized);
 			
@@ -112,7 +113,7 @@ public class RoomProperties : MonoBehaviour
 		for(int i=0; i<Rooms.Length;i++)
 		{
 			Debug.Log("Scare " + Rooms[i].name);
-			Rooms[i].ScareHumans();
+			Rooms[i].ScareHumans(Rooms[i].Center.position);
 		}
     }
 	#endif
