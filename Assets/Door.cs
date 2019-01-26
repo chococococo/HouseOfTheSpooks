@@ -7,10 +7,12 @@ public class Door : MonoBehaviour {
 	public List<RoomProperties> Rooms = new List<RoomProperties>();
 	public RoomProperties GetOpositeRoom(RoomProperties fromRoom)
 	{
+		Debug.Log("From Room: " + fromRoom);
 		foreach(RoomProperties room in Rooms)
 		{
-			if(fromRoom!= room)
+			if(fromRoom != room)
 			{
+				Debug.Log("To Room: " + room);
 				return room;
 			}
 		}
