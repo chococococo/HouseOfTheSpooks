@@ -6,6 +6,7 @@ using UnityEngine;
 [SelectionBase]
 public class RoomProperties : MonoBehaviour 
 {	
+	[HideInInspector]
 	public Transform Center;
 
 	[HideInInspector]
@@ -13,7 +14,7 @@ public class RoomProperties : MonoBehaviour
 	private List<HumanAI> Humans = new List<HumanAI>();
 	void Awake()
 	{
-		Center = transform.FindChild("Center");
+		Center = transform.Find("Center");
 	}
 	
 	void Update () {
@@ -26,6 +27,7 @@ public class RoomProperties : MonoBehaviour
 			Debug.Log("Scare " + human.name);
 			Door exitDoor = GetExitDoor(human.transform,scarePosition);
 			RoomProperties targetRoom = exitDoor.GetOpositeRoom(this);
+			Debug.Log("Destination: " + targetRoom.name);
 			human.ScareToRoom(targetRoom);
 		}
 	}	
@@ -59,6 +61,7 @@ public class RoomProperties : MonoBehaviour
 				lowestAngle = angle;
 			}
 		}
+		Debug.Log("Door: " + Doors[closestDoorIndex].name);
 		return Doors[closestDoorIndex];
 	}	
 	private Vector2 GetXYDirection(Vector3 a, Vector3 b)

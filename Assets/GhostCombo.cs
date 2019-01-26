@@ -60,7 +60,7 @@ public class GhostCombo : MonoBehaviour {
         }
         avg = avg / props.Count;
         tmr = 0f;
-        //props[0].currentRoom.ScarePosition(avg) //FACU ACA
+        props[0].currentRoom.ScareHumans(avg); //FACU ACA
         props = new List<PossessableProp>();
     }
 

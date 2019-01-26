@@ -7,9 +7,11 @@ public enum HumanState
 	IDLE,
 	WALKING,	
 	SCARED,
+	CALMING_DOWN,
 	FREAKED
 }
 public class HumanAI : MonoBehaviour {
+	public HumanState EmotionalState;
 	private HumanCharacterController charController; 	
 	// Use this for initialization
 	void Awake () 
@@ -21,7 +23,11 @@ public class HumanAI : MonoBehaviour {
 	}
 	public void ScareToRoom(RoomProperties targetRoom)
 	{
-		charController.SetDestination(targetRoom.Center.position, ()=> Debug.Log("Arrived!"));
+		charController.SetDestination(targetRoom.Center.position, ()=> Debug.Log("Arrived to room without catching!"));
+		EmotionalState = HumanState.SCARED;
+	}
+	public void OnEnterRoom(RoomProperties enteredRoom)
+	{
 	}
 	void Update()
 	{
