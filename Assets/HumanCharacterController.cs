@@ -5,36 +5,69 @@ using UnityEngine.AI;
 
 public delegate void ArrivalEvent();
 public class HumanCharacterController : MonoBehaviour 
-{
-	public Transform testTarget;
-	public float MinDistance = 0.1f;
+{	
+	public float minDistance = 0.05f;
 	private NavMeshAgent agent;
-	void Awake () 
+	private ArrivalEvent OnArrive;
+	public void SetDestination(Vector3 targetPosition, ArrivalEvent cb = null)
 	{
-		
+		OnArrive = cb;
 		NavMeshPath path = new NavMeshPath();
-		agent = GetComponent<NavMeshAgent>();	
-		
-		if(agent.CalculatePath(testTarget.position, path))
+		if(agent.CalculatePath(targetPosition, path))
 		{
 			Debug.Log("Path found");
 			agent.SetPath(path);
 		}
 		else
 		{
+			HandleReachDestination();
 			Debug.Log("Path not found");
 		}
 	}
-	ArrivalEvent OnArrive;
-	public void SetDestination(Vector3 TargetPosition, ArrivalEvent cb = null)
+	void Awake () 
 	{
-
+		agent = GetComponent<NavMeshAgent>();			
+	}
+	void HandleReachDestination()
+	{
+		OnArrive();
+		OnArrive = null;
+		agent.ResetPath();
 	}
 	void Update()
 	{
 		if(OnArrive!=null)
 		{
-			//if()
+			if(ReachedDestinationCheck())
+			{
+				HandleReachDestination();
+			}
+			else
+			{
+				//Debug.Log("Distance: " + agent.remainingDistance);				
+			}
 		}
+	}
+
+	private bool ReachedDestinationCheck()
+	{
+		float dist=agent.remainingDistance; 
+		if (dist!=Mathf.Infinity && agent.pathStatus==NavMeshPathStatus.PathComplete && agent.remainingDistance<=minDistance) 
+		{
+			return true;
+		}
+		/* 
+		if (!agent.pathPending)
+		{
+			if (agent.remainingDistance <= agent.stoppingDistance)
+			{
+				if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+				{
+					return true;
+				}
+			}
+		}
+		*/
+		return false;
 	}
 }
