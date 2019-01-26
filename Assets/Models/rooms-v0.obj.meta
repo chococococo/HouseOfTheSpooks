@@ -10,6 +10,15 @@ ModelImporter:
     100008: room_2x2_floor
     100010: walls_room_1x1
     100012: walls_room_2x2
+    100014: floor_room1x1_room_1x1
+    100016: room1x1_room_1x1_walls
+    100018: room2x2_room_2x2_floor
+    100020: walls_room2x2_room_2x2
+    100022: room1x1_floor1x1
+    100024: room2x2_floor2x2
+    100026: wall2x2_room1x1
+    100028: wall2x2_room2x2
+    100030: wall1x1_room1x1
     400000: room_1x1
     400002: room_2x2
     400004: //RootNode
@@ -17,6 +26,15 @@ ModelImporter:
     400008: room_2x2_floor
     400010: walls_room_1x1
     400012: walls_room_2x2
+    400014: floor_room1x1_room_1x1
+    400016: room1x1_room_1x1_walls
+    400018: room2x2_room_2x2_floor
+    400020: walls_room2x2_room_2x2
+    400022: room1x1_floor1x1
+    400024: room2x2_floor2x2
+    400026: wall2x2_room1x1
+    400028: wall2x2_room2x2
+    400030: wall1x1_room1x1
     2100000: initialShadingGroup
     2300000: room_1x1
     2300002: room_2x2
@@ -24,18 +42,45 @@ ModelImporter:
     2300006: room_2x2_floor
     2300008: walls_room_1x1
     2300010: walls_room_2x2
+    2300012: floor_room1x1_room_1x1
+    2300014: room1x1_room_1x1_walls
+    2300016: room2x2_room_2x2_floor
+    2300018: walls_room2x2_room_2x2
+    2300020: room1x1_floor1x1
+    2300022: room2x2_floor2x2
+    2300024: wall2x2_room1x1
+    2300026: wall2x2_room2x2
+    2300028: wall1x1_room1x1
     3300000: room_1x1
     3300002: room_2x2
     3300004: room_1x1_floor
     3300006: room_2x2_floor
     3300008: walls_room_1x1
     3300010: walls_room_2x2
+    3300012: floor_room1x1_room_1x1
+    3300014: room1x1_room_1x1_walls
+    3300016: room2x2_room_2x2_floor
+    3300018: walls_room2x2_room_2x2
+    3300020: room1x1_floor1x1
+    3300022: room2x2_floor2x2
+    3300024: wall2x2_room1x1
+    3300026: wall2x2_room2x2
+    3300028: wall1x1_room1x1
     4300000: room_1x1
     4300002: room_2x2
     4300004: room_1x1_floor
     4300006: room_2x2_floor
     4300008: walls_room_1x1
     4300010: walls_room_2x2
+    4300012: floor_room1x1_room_1x1
+    4300014: room1x1_room_1x1_walls
+    4300016: room2x2_room_2x2_floor
+    4300018: walls_room2x2_room_2x2
+    4300020: room1x1_floor1x1
+    4300022: room2x2_floor2x2
+    4300024: wall2x2_room1x1
+    4300026: wall2x2_room2x2
+    4300028: wall1x1_room1x1
   externalObjects: {}
   materials:
     importMaterials: 1
