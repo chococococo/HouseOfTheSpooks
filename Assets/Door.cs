@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[SelectionBase]
 public class Door : MonoBehaviour {
 
 	public List<RoomProperties> Rooms = new List<RoomProperties>();
