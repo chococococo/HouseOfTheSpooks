@@ -24,6 +24,11 @@ public class HumanAI : MonoBehaviour {
 	void Start()
 	{
 	}
+	public void GoToRoom(RoomProperties targetRoom)
+	{
+		Debug.Log("Go to room: " + targetRoom.name);
+		charController.SetDestination(targetRoom.Center.position, ()=> Debug.Log("Arrived to room without catching!"));
+	}
 	public void ScareToRoom(RoomProperties targetRoom)
 	{
 		charController.SetDestination(targetRoom.Center.position, ()=> Debug.Log("Arrived to room without catching!"));
