@@ -9,9 +9,12 @@ public enum HumanState
 	WORRIED,
 }
 public class HumanAI : MonoBehaviour {
+
+	public int Life = 3;
 	public HumanState EmotionalState;
 
 	public float ScareDuration = 2f;
+	private bool RunningAway;
 
 	//public float ScaredCountDown
 
@@ -26,19 +29,41 @@ public class HumanAI : MonoBehaviour {
 	}
 	public void GoToRoom(RoomProperties targetRoom)
 	{
-		Debug.Log("Go to room: " + targetRoom.name);
-		charController.SetDestination(targetRoom.Center.position, ()=> Debug.Log("Arrived to room without catching!"));
+		if(!RunningAway)
+		{
+			Debug.Log("Go to room: " + targetRoom.name);
+			charController.SetDestination(targetRoom.Center.position, ()=> Debug.Log("Arrived to room without catching!"));
+		}
+		
 	}
 	public void ScareToRoom(RoomProperties targetRoom)
 	{
-		charController.SetDestination(targetRoom.Center.position, ()=> Debug.Log("Arrived to room without catching!"));
-		EmotionalState = HumanState.SCARED;
+		if(!RunningAway)
+		{
+			Life --;
+			Debug.Log("Life: " + Life);
+			if(Life<0)
+			{
+				RunningAway = true;
+				charController.SetDestination(Entrance.instance.SpawnPoint.position, ()=> Debug.Log("Ran Away!"));
+			}
+			bool foundPath = charController.SetDestination(targetRoom.Center.position, ()=> Debug.Log("Arrived to room without catching!"));			
+			EmotionalState = HumanState.SCARED;
+			if(!foundPath)
+			{
+				GameObject.Destroy(gameObject);
+			}
+		}
+		
 	}
 	public void OnEnterRoom(RoomProperties enteredRoom)
 	{
-		if(EmotionalState == HumanState.SCARED)
+		if(!RunningAway)
 		{
-			EmotionalState = HumanState.WORRIED;
+			if(EmotionalState == HumanState.SCARED)
+			{
+				EmotionalState = HumanState.WORRIED;
+			}
 		}
 	}
 	void Update()

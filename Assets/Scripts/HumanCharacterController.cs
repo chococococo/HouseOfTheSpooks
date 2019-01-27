@@ -9,7 +9,7 @@ public class HumanCharacterController : MonoBehaviour
 	public float minDistance = 0.05f;
 	private NavMeshAgent agent;
 	private ArrivalEvent OnArrive;
-	public void SetDestination(Vector3 targetPosition, ArrivalEvent cb = null)
+	public bool SetDestination(Vector3 targetPosition, ArrivalEvent cb = null)
 	{
 		OnArrive = cb;
 		NavMeshPath path = new NavMeshPath();
@@ -17,10 +17,12 @@ public class HumanCharacterController : MonoBehaviour
 		{
 			Debug.Log("Path found");
 			agent.SetPath(path);
+			return true;
 		}
 		else
 		{
 			HandleReachDestination();
+			return false;
 			Debug.Log("Path not found");
 		}
 	}

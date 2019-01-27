@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GhostMovement : MonoBehaviour {
     public float speed = 2f;
-
+    public Transform Mesh;
 
     DashController dash;
     GhostController ghost;
@@ -23,6 +23,7 @@ public class GhostMovement : MonoBehaviour {
             dir = ghost.GetNextDir().vec;
             if (dir != Vector3.zero) {
                 rb.MovePosition(transform.position + dir * Time.deltaTime * speed);
+                Mesh.transform.rotation = Quaternion.LookRotation(-dir.normalized, Vector3.up);
             }
         }
     }
