@@ -15,17 +15,22 @@ public class GameTimer : MonoBehaviour {
     public float restTime = 5f;
     public int currentLvl;
     public GameObject lostBanner;
-
+    public Text waveTxt;
+    public float pointMultiplier = 0.4f;
     static GameTimer mgr;
+    int wave;
+    public GameObject canvas;
+
 
 
 
     // Use this for initialization
     void Start () {
-        waveOn = true;
+        waveOn = false;
         tmr = 0f;
         waveTmr = 0f;
-        currentLvl = 0;
+        currentLvl = -1;
+        wave = 0;
         if (mgr == null)
         {
             mgr = this;
@@ -34,6 +39,8 @@ public class GameTimer : MonoBehaviour {
         {
             Debug.LogError(" Morethan one mgr");
         }
+        canvas.SetActive(true);
+        StartCoroutine("NextWave");
 
     }
 
@@ -44,6 +51,7 @@ public class GameTimer : MonoBehaviour {
 
     public void RestartAll()
     {
+        Debug.Log("Restart");
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
@@ -76,7 +84,18 @@ public class GameTimer : MonoBehaviour {
     {
         Debug.Log("next wae");
         waveOn = false;
-        yield return new WaitForSeconds(restTime);
+        wave++;
+        waveTxt.gameObject.SetActive(true);
+        waveTxt.text = "Wave " + wave;
+        img.fillAmount = 1f;
+        float r = restTime;
+        if (wave == 1)
+        {
+            r *= 2f;
+        }
+        yield return new WaitForSeconds(r);
+        waveTxt.gameObject.SetActive(false);
+
         waveOn = true;
         waveTmr = 0f;
         tmr = 0f;
@@ -85,11 +104,15 @@ public class GameTimer : MonoBehaviour {
         {
             currentLvl = timeToDie.Length - 1;
         }
+        else
+        {
+            pointMultiplier -= 0.3f;
+        }
     }
 
     public void ScaredHuman(int scaredCount)
     {
-        tmr -= 0.1f * scaredCount;
+        tmr -= pointMultiplier * scaredCount;
         if (tmr <= 0f)
         {
             tmr = 0f;
