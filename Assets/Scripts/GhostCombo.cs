@@ -79,12 +79,15 @@ public class GhostCombo : MonoBehaviour
     {
         Vector3 avg = Vector3.zero;
         RoomProperties room = props[0].currentRoom;
+        int ppl = 0;
         foreach (PossessableProp p in props)
         {
             avg += p.transform.position;
+            ppl += p.currentRoom.Humans.Count;
             p.DestroyPropAndSpawn();
         }
         avg = avg / props.Count;
+        GameTimer.GetInstance().ScaredHuman(ppl);
         props = new List<PossessableProp>();
         tmr = 0f;
         dashCount = 0;

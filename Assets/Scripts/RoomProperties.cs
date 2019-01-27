@@ -11,7 +11,7 @@ public class RoomProperties : MonoBehaviour
 
 	[HideInInspector]
 	public List<Door> Doors = new List<Door>();
-	private List<HumanAI> Humans = new List<HumanAI>();
+	public List<HumanAI> Humans = new List<HumanAI>();
 	void Awake()
 	{
 		Center = transform.Find("Center");
