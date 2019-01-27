@@ -64,8 +64,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611552922826774}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 500.87, y: 1.02, z: 494.83}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.44, y: -0.389035, z: -7.1980286}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4141891568386680}
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
   time: 1
-  brokenPropPrefab: {fileID: 1876399748811386, guid: 34ed55017de4e45429c5892823ed522c,
+  brokenPropPrefab: {fileID: 1664133663916894, guid: 389db45954186e3409b2479ee62702e5,
     type: 2}
   possessedColor: {r: 0, g: 0.8666667, b: 1, a: 0.83137256}
 --- !u!212 &212497925459359840

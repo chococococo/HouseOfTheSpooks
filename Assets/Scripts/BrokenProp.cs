@@ -6,7 +6,7 @@ public class BrokenProp : MonoBehaviour {
 
     public float timeToRespawn = 2f;
     float tmr;
-
+    FX fx;
     PossessableProp originalProp;
 
 	void Start () {
@@ -19,6 +19,11 @@ public class BrokenProp : MonoBehaviour {
 
     void InitialStatus() {
         tmr = 0f;
+        if (fx == null)
+        {
+            fx = GetComponent<FX>();
+        }
+        fx.PlayRandomClip();
     }
 
     public void SetOriginal(PossessableProp prop) {

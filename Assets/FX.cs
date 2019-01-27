@@ -2,25 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FX : MonoBehaviour {
+public class FX : MonoBehaviour
+{
     public AudioClip[] clips;
     AudioSource src;
     public GameObject particles;
 
-    private void Start() {
+    private void Start()
+    {
         src = GetComponent<AudioSource>();
     }
 
-    AudioClip GetRandom() {
+    AudioClip GetRandom()
+    {
         int rnd = Random.Range(0, clips.Length);
         return clips[rnd];
     }
 
-    public void PlayRandomClip() {
-        src.PlayOneShot(GetRandom());
+    public void PlayRandomClip()
+    {
+        if (clips != null && clips.Length > 0 && src != null)
+        {
+            src.PlayOneShot(GetRandom());
+
+        }
     }
 
-    public void PlayParticles() {
+    public void PlayParticles()
+    {
         Destroy(Instantiate(particles, transform.position, particles.transform.rotation, this.transform), 2f);
     }
 
