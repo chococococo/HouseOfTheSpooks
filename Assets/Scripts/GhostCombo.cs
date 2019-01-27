@@ -9,6 +9,7 @@ public class GhostCombo : MonoBehaviour
     GhostController ghost;
     public List<PossessableProp> props;
     public int dashCount;
+    public FX fx;
 
     // Use this for initialization
     void Start()
@@ -66,6 +67,10 @@ public class GhostCombo : MonoBehaviour
     void FailCombo()
     {
         Debug.Log("Fail");
+        if (dashCount > 1)
+        {
+            fx.PlayRandomClip();
+        }
         foreach (PossessableProp p in props)
         {
             p.ReturnToNormal();

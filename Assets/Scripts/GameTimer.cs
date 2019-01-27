@@ -20,8 +20,8 @@ public class GameTimer : MonoBehaviour {
     static GameTimer mgr;
     int wave;
     public GameObject canvas;
-
-
+    public AudioSource src;
+    public AudioClip lossClip;
 
 
     // Use this for initialization
@@ -123,6 +123,9 @@ public class GameTimer : MonoBehaviour {
     {
         waveOn = false;
         lostBanner.SetActive(true);
+        src.clip = lossClip;
+        src.loop = false;
+        src.Play();
         Debug.Log("LOST");
     }
 }
