@@ -4,15 +4,17 @@ using UnityEngine;
 
 public enum HumanState
 {
-	IDLE,
-	WALKING,	
+	NORMAL,	
 	SCARED,
-	CALMING_DOWN,
-	FREAKED,
-    LEAVING
+	WORRIED,
 }
 public class HumanAI : MonoBehaviour {
 	public HumanState EmotionalState;
+
+	public float ScareDuration = 2f;
+
+	//public float ScaredCountDown
+
 	private HumanCharacterController charController; 	
 	// Use this for initialization
 	void Awake () 
@@ -29,9 +31,17 @@ public class HumanAI : MonoBehaviour {
 	}
 	public void OnEnterRoom(RoomProperties enteredRoom)
 	{
+		if(EmotionalState == HumanState.SCARED)
+		{
+			EmotionalState = HumanState.WORRIED;
+		}
 	}
 	void Update()
 	{
-		
+		switch(EmotionalState)
+		{
+			case HumanState.SCARED:
+			break;
+		}
 	}
 }

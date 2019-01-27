@@ -74,6 +74,7 @@ public class RoomProperties : MonoBehaviour
 		if(human != null)
 		{			
 			Debug.Log(other.name +" arrived at "+ name +"!");
+			human.OnEnterRoom(this);
 			Humans.Add(human);
 		}
 		else
