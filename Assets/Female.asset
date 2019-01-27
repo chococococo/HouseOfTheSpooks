@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487b2f7a4ba6d9f429bfff43787e52f8, type: 3}
+  m_Name: Female
+  m_EditorClassIdentifier: 
+  Down: {fileID: 21300000, guid: 76f6888f69c431d43824e35b4950e140, type: 3}
+  Right: {fileID: 21300000, guid: 21bdbf6e59696a342b30f91ce0bb1bd5, type: 3}
+  Up: {fileID: 21300000, guid: ac5617253fad86f4b87b90656b58ff54, type: 3}
+  ScaredDown: {fileID: 21300000, guid: f0c54eed0891f0346b18574d826bbef7, type: 3}
+  ScaredRight: {fileID: 21300000, guid: 7f0f7319b87405445a6ab164b3bd355d, type: 3}
+  ScaredUp: {fileID: 21300000, guid: 5fbcd1984625a894d8d57ced2d2e282d, type: 3}
+  WorriedDown: {fileID: 21300000, guid: 4eabd177109a6ad4e81ee4bd28af1d84, type: 3}
+  WorriedRight: {fileID: 21300000, guid: 4bb714518c7dced41829c1ac29db52e0, type: 3}
+  WorriedUp: {fileID: 21300000, guid: ea0f754e16e7d4b42bb62d78f6477313, type: 3}
