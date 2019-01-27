@@ -72,6 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4547521208754364}
+  - component: {fileID: 95442703402905018}
   m_Layer: 0
   m_Name: Fantasma
   m_TagString: Untagged
@@ -204,7 +205,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1872720790381504
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -242,7 +243,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4742560930870042}
-  - {fileID: 4737347543889526}
   - {fileID: 4908518865998636}
   - {fileID: 4990503904441542}
   m_Father: {fileID: 0}
@@ -311,12 +311,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872720790381504}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.23, y: 0.37, z: -0.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.35753125, y: -0.32941478, z: -0.8631566, w: 0.1364481}
+  m_LocalPosition: {x: 0.03, y: 0.05, z: -0.87}
+  m_LocalScale: {x: 1.6129055, y: 1.6129037, z: 1.6129051}
   m_Children: []
-  m_Father: {fileID: 4047958242411586}
-  m_RootOrder: 1
+  m_Father: {fileID: 4866241902927044}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4742560930870042
 Transform:
@@ -354,7 +354,8 @@ Transform:
   m_LocalRotation: {x: 0.93427396, y: 0, z: 0, w: -0.356556}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4737347543889526}
   m_Father: {fileID: 4547521208754364}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -370,7 +371,7 @@ Transform:
   m_Children:
   - {fileID: 4522391919494514}
   m_Father: {fileID: 4047958242411586}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4990503904441542
 Transform:
@@ -383,7 +384,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4047958242411586}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23026328076051192
 MeshRenderer:
@@ -949,6 +950,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95442703402905018
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1112242166515316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eadb647736f3d0b48a98bdb23bdc5e63, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!96 &96054016587254582
 TrailRenderer:
   serializedVersion: 2
@@ -1200,6 +1219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 14
+  Mesh: {fileID: 4547521208754364}
 --- !u!114 &114235461544775198
 MonoBehaviour:
   m_ObjectHideFlags: 1

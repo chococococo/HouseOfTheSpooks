@@ -58,6 +58,10 @@ public class GameTimer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(lost && Input.GetMouseButton(0))
+        {
+            RestartAll();
+        }
 		if (waveOn)
         {
             waveTmr += Time.deltaTime;
@@ -118,9 +122,10 @@ public class GameTimer : MonoBehaviour {
             tmr = 0f;
         }
     }
-
+    bool lost = false;
     void LoseGame()
     {
+        lost = true;
         waveOn = false;
         lostBanner.SetActive(true);
         src.clip = lossClip;
