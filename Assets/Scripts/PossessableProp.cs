@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PossessableProp : MonoBehaviour {
+    [HideInInspector]
     public RoomProperties currentRoom;
     public float time = 1f;
     public GameObject brokenPropPrefab;
@@ -15,6 +16,8 @@ public class PossessableProp : MonoBehaviour {
     float tmr;
     GhostController ghost;
     BoxCollider coll;
+    Material myMat;
+    SpriteRenderer spr;
 
     private void Start() {
         InitialStatus();
@@ -31,9 +34,17 @@ public class PossessableProp : MonoBehaviour {
             coll = GetComponent<BoxCollider>();
         }
         coll.enabled = true;
-        if (render == null) {
-            render = GetComponent<MeshRenderer>();
-            initialColor = render.material.color;
+        if (myMat == null) {
+            Renderer r = GetComponent<Renderer>();
+            if (r == null) {
+                spr = transform.GetChild(0).GetComponent<SpriteRenderer>();
+                myMat = spr.material;
+
+            } else {
+
+                myMat = GetComponent<Renderer>().material;
+            }
+            initialColor = myMat.color;
         }
         SetNormalColor();
     }
@@ -44,7 +55,7 @@ public class PossessableProp : MonoBehaviour {
             ghost = other.transform.parent.GetComponent<GhostController>();
             coll.enabled = false;
             ghost.StartPossess(this);
-            SetSpookyColor();
+           // SetSpookyColor();
             //PlayAnimation
         }
     }
@@ -57,11 +68,23 @@ public class PossessableProp : MonoBehaviour {
     }
 
     void SetSpookyColor() {
-        render.material.color = possessedColor;
+        // myMat.EnableKeyword("_EMISSION");
+        if (spr != null) {
+            spr.color = possessedColor;
+        } else {
+            myMat.SetColor("_EmissionColor", possessedColor);
+            myMat.color = possessedColor;
+
+        }
     }
 
     void SetNormalColor() {
-        render.material.color = initialColor;
+        if (spr != null) {
+            spr.color = initialColor;
+        } else {
+            myMat.SetColor("_EmissionColor", Color.black);
+            myMat.color = initialColor;
+        }
     }
 
 

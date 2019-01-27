@@ -20,7 +20,7 @@ public class GhostMovement : MonoBehaviour {
     void Update() {
         Vector3 dir = Vector3.zero;
         if (!dash.IsDashing()) {
-            dir = ghost.GetNextDir();
+            dir = ghost.GetNextDir().vec;
             if (dir != Vector3.zero) {
                 rb.MovePosition(transform.position + dir * Time.deltaTime * speed);
             }

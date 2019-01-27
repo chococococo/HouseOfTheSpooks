@@ -8,6 +8,14 @@ public class GhostController : MonoBehaviour {
     GhostCombo combo;
     bool isPossessing;
 
+    public class Direction {
+        public Vector3 vec;
+        public bool diag;
+        public Direction(Vector3 v, bool d) {
+            vec = v;
+            diag = d;
+        }
+    }
 
     void Start() {
         dash = GetComponent<DashController>();
@@ -15,21 +23,28 @@ public class GhostController : MonoBehaviour {
         combo = GetComponent<GhostCombo>();
     }
 
-    public Vector3 GetNextDir() {
+    public Direction GetNextDir() {
         Vector3 res = Vector3.zero;
+        bool vert = false;
+        bool hor = false;
         if (Input.GetKey(KeyCode.UpArrow)) {
             res += transform.forward;
+            vert = true;
         }
         if (Input.GetKey(KeyCode.DownArrow)) {
             res -= transform.forward;
+            vert = true;
         }
         if (Input.GetKey(KeyCode.RightArrow)) {
             res += transform.right;
+            hor = true;
         }
         if (Input.GetKey(KeyCode.LeftArrow)) {
             res -= transform.right;
+            hor = true;
+
         }
-        return res;
+        return new Direction(res, vert & hor);
     }
 
     public bool IsPossessing() {
