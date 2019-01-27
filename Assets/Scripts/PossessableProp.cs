@@ -56,7 +56,7 @@ public class PossessableProp : MonoBehaviour {
             coll.enabled = false;
             ghost.transform.position = this.transform.position;
             ghost.StartPossess(this);
-           // SetSpookyColor();
+            SetSpookyColor();
             //PlayAnimation
         }
     }

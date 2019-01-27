@@ -19,6 +19,8 @@ ModelImporter:
     100026: wall2x2_room1x1
     100028: wall2x2_room2x2
     100030: wall1x1_room1x1
+    100032: polySurface1_wall1x1_room1x1
+    100034: wall1x1_room1x1_polySurface2
     400000: room_1x1
     400002: room_2x2
     400004: //RootNode
@@ -35,7 +37,14 @@ ModelImporter:
     400026: wall2x2_room1x1
     400028: wall2x2_room2x2
     400030: wall1x1_room1x1
+    400032: polySurface1_wall1x1_room1x1
+    400034: wall1x1_room1x1_polySurface2
     2100000: initialShadingGroup
+    2100002: polySurface1_wall1x1_room1x1Mat
+    2100004: room1x1_floor1x1Mat
+    2100006: room2x2_floor2x2Mat
+    2100008: wall1x1_room1x1_polySurface2Mat
+    2100010: wall2x2_room2x2Mat
     2300000: room_1x1
     2300002: room_2x2
     2300004: room_1x1_floor
@@ -51,6 +60,8 @@ ModelImporter:
     2300024: wall2x2_room1x1
     2300026: wall2x2_room2x2
     2300028: wall1x1_room1x1
+    2300030: polySurface1_wall1x1_room1x1
+    2300032: wall1x1_room1x1_polySurface2
     3300000: room_1x1
     3300002: room_2x2
     3300004: room_1x1_floor
@@ -66,6 +77,8 @@ ModelImporter:
     3300024: wall2x2_room1x1
     3300026: wall2x2_room2x2
     3300028: wall1x1_room1x1
+    3300030: polySurface1_wall1x1_room1x1
+    3300032: wall1x1_room1x1_polySurface2
     4300000: room_1x1
     4300002: room_2x2
     4300004: room_1x1_floor
@@ -81,6 +94,8 @@ ModelImporter:
     4300024: wall2x2_room1x1
     4300026: wall2x2_room2x2
     4300028: wall1x1_room1x1
+    4300030: polySurface1_wall1x1_room1x1
+    4300032: wall1x1_room1x1_polySurface2
   externalObjects: {}
   materials:
     importMaterials: 1

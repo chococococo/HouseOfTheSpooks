@@ -114,7 +114,7 @@ MonoBehaviour:
   time: 1
   brokenPropPrefab: {fileID: 1876399748811386, guid: 34ed55017de4e45429c5892823ed522c,
     type: 2}
-  possessedColor: {r: 0, g: 0.12270379, b: 1, a: 0}
+  possessedColor: {r: 0, g: 0.8666667, b: 1, a: 0.83137256}
 --- !u!212 &212497925459359840
 SpriteRenderer:
   m_ObjectHideFlags: 1

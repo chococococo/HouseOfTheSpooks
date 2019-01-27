@@ -7,6 +7,7 @@ public class GhostController : MonoBehaviour {
     GhostMovement move;
     GhostCombo combo;
     bool isPossessing;
+    FX fx;
 
     public class Direction {
         public Vector3 vec;
@@ -21,6 +22,7 @@ public class GhostController : MonoBehaviour {
         dash = GetComponent<DashController>();
         move = GetComponent<GhostMovement>();
         combo = GetComponent<GhostCombo>();
+        fx = GetComponent<FX>();
     }
 
     public Direction GetNextDir() {
@@ -53,6 +55,7 @@ public class GhostController : MonoBehaviour {
 
     public void StartPossess(PossessableProp prop) {
         dash.Stop();
+        fx.PlayRandomClip();
         combo.Add(prop);
         isPossessing = true;
         ApplyPossess();

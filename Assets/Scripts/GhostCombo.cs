@@ -7,7 +7,7 @@ public class GhostCombo : MonoBehaviour {
     float tmr;
     GhostController ghost;
     public List<PossessableProp> props;
-    int dashCount;
+    public int dashCount;
 
     // Use this for initialization
     void Start() {
@@ -54,6 +54,7 @@ public class GhostCombo : MonoBehaviour {
     }
 
     void FailCombo() {
+        Debug.Log("Fail");
         foreach (PossessableProp p in props) {
             p.ReturnToNormal();
         }
