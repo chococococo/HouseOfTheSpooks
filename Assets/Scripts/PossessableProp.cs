@@ -54,6 +54,7 @@ public class PossessableProp : MonoBehaviour {
             Debug.Log("player entered");
             ghost = other.transform.parent.GetComponent<GhostController>();
             coll.enabled = false;
+            ghost.transform.position = this.transform.position;
             ghost.StartPossess(this);
            // SetSpookyColor();
             //PlayAnimation
